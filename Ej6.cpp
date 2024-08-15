@@ -4,29 +4,39 @@ implementar una función recursiva que cuente la cantidad de dígitos pares que
 ocupan posiciones impares (identificándolas de izquierda a derecha) en "n". Ej.: si
 el número es 22005 el resultado es 2, y si fuera 1414 el resultado es 0
 */
-
 #include <iostream>
 using namespace std;
 
-int contarParesEnPosicionesImpares(int n, int pos=1){
-    //Caso base: si n es 0, no hay mas digitos que revisar.
-    if(n==0){
+// Función recursiva para contar dígitos pares en posiciones impares
+int contarParesEnPosicionesImpares( unsigned int n,  int tamanionumero ) { //22005
+    // Caso base: si n es 0, no hay más dígitos que revisar
+    if (n == 0) {
         return 0;
     }
-
-    int digitoActual=n%10; //El resto de la division.
-    if(pos%2!=0 && digitoActual%2==0){
-        return 1+contarParesEnPosicionesImpares(n/10,pos+1); //Ponemos 1 para no arrancar desde la posicion 0 del vector.
-    }else{
-        return contarParesEnPosicionesImpares(n/10, pos+1);
-
+    // Verificar si la posición actual es impar y el dígito es par
+    int digitoActual = n % 10;
+    if (tamanionumero % 2 != 0 && digitoActual % 2 == 0) {
+        // Incrementar el contador y realizar la llamada recursiva
+        return 1 + contarParesEnPosicionesImpares(n / 10, tamanionumero - 1);
+    } else {
+        // Realizar la llamada recursiva sin incrementar el contador
+        return contarParesEnPosicionesImpares(n / 10, tamanionumero - 1);
     }
 }
 
-int main(){
-    int n;
-    cout<<"Ingrese un numero entero positivo n: "<<endl;
-    cin>>n;
+int main() {
+    unsigned int n;
+    int d;
+    cout << "Ingrese cantidad de digitos: ";
+    cin >> d;
 
-    cout<<contarParesEnPosicionesImpares(n)<<endl;
+    cout << "Ingrese un numero entero positivo: ";
+    cin >> n;
+
+    // Contar dígitos pares en posiciones impares usando la función recursiva
+    int resultado = contarParesEnPosicionesImpares(n,d);
+
+    cout << "Cantidad de digitos pares en posiciones impares: " << resultado << endl;
+
+    return 0;
 }

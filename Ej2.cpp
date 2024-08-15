@@ -17,12 +17,12 @@ int sumaRecursiva(int n){
     }
 }
 
-int main() {
-
+int main(){
     int n;
-
-    cout<<"Ingrese un numero n para determinar la suma de los n primeros numeros naturales: "<<endl;
+    cout<<"Ingrese un numero n para sumar los primeros numeros naturales hasta n: "<<endl;
     cin>>n;
+    cout<<"La suma de los primeros "<<n<<" numeros naturales es: ";
+    int suma = sumaRecursiva(n);
+    cout << " = " << suma << endl;
 
-    cout<<"La suma de los primeros "<<n<<" numeros naturales es: "<<sumaRecursiva(n)<<endl;
 }
